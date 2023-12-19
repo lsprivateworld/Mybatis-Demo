@@ -1,0 +1,41 @@
+#配置端口号
+server:
+  port: 8001
+#配置Mybatis
+mybatis:
+  configuration:
+  map-underscore-to-camel-case : true
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.spring.mybatisdemo.bean
+
+#配置数据源
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?serverTimeZone=UTC&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: ls140078
+
+#    # 配置Druid数据库
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    druid:
+#      initial-size: 20 # 初始连接数
+#      min-idle: 10 # 最小空闲连接数
+#      max-active: 100 # 最大连接数
+
+#    sharding:
+#      tables:
+#        course:
+#          # 分表节点 多个数据库写法 m$->{1..2}.course_$->{0..10}
+#          actual-data-nodes: m1.course_$->{0..10}
+#          # 配置主键生成策略 采用雪花算法
+#          key-generator:
+#            column: id
+#            type: SNOWFLAKE
+#          # 分表策略
+#          table-strategy:
+#            # 行表达式分片策略
+#            inline:
+#              sharding-column: year
+#              # Groovy的表达式分片算法
+#              algorithm-expression: course_$->{year-2022}
